@@ -28,5 +28,14 @@ public class PlayerCollder : MonoBehaviour
 
         rb.velocity = new Vector2(a, b) * moveSpeed;
         ani.SetBool(Run, a != 0 || b != 0);
+
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        }
+        if(Input.GetKeyDown(KeyCode.D)|| Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        }
     }
 }
