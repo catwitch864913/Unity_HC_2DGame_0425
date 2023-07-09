@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using TMPro;
 using UnityEngine;
 
 public class DamageBasic : MonoBehaviour
 {
     [Header("資料")]
     public DataBasic data;
-
-    float hp;
+    [Header("傷害預置物")]
+    public GameObject prefabDamage;
+    
+    public float hp;
     private void Awake()
     {
         hp = data.hp;
@@ -17,11 +20,15 @@ public class DamageBasic : MonoBehaviour
     {
         hp -= damage;
 
+        GameObject tempDamage= Instantiate(prefabDamage, transform.position, Quaternion.identity);
+        tempDamage.transform.Find("傷害顯示文字").GetComponent<TextMeshProUGUI>().text = damage.ToString();
+
+        Destroy(tempDamage, 1.5f);
         print($"<color=#ffee66>{gameObject.name}血量剩下:{hp}</color>");
 
         if (hp <= 0) Dead();
     }
-    private void Dead()
+    protected virtual void Dead()
     {
         print($"<color=#ff9966>{gameObject.name}死亡</color>");
 
