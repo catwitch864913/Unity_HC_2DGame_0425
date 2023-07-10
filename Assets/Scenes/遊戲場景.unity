@@ -323,10 +323,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SayDialog
       objectReference: {fileID: 0}
-    - target: {fileID: 188902, guid: 8a005a9e0713f4cc1b5ad29fb07657d3, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 22488902, guid: 8a005a9e0713f4cc1b5ad29fb07657d3, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -5698,6 +5694,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ghost
       objectReference: {fileID: 0}
+    - target: {fileID: 8218346209309486949, guid: 4bc986fe65f011d469e2a4b90c39af3f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8218346209309486952, guid: 4bc986fe65f011d469e2a4b90c39af3f, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -5845,6 +5845,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slime
       objectReference: {fileID: 0}
+    - target: {fileID: 3051189025077759987, guid: c70ff9cab6eff6047b8c2743256b7b12, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c70ff9cab6eff6047b8c2743256b7b12, type: 3}
 --- !u!1 &2045970217
@@ -5861,6 +5865,8 @@ GameObject:
   - component: {fileID: 2045970223}
   - component: {fileID: 2045970222}
   - component: {fileID: 2045970221}
+  - component: {fileID: 2045970224}
+  - component: {fileID: 2045970225}
   m_Layer: 0
   m_Name: "\u4F01\u9D5D"
   m_TagString: Untagged
@@ -6009,6 +6015,41 @@ MonoBehaviour:
   rb: {fileID: 0}
   ani: {fileID: 0}
   Run: Walk
+--- !u!58 &2045970224
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045970217}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.27}
+  serializedVersion: 2
+  m_Radius: 2
+--- !u!114 &2045970225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045970217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec5dffeeca1730842afbdf2c49131614, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imgExp: {fileID: 1766092998}
+  textLv: {fileID: 1298799159}
+  textExp: {fileID: 970254894}
+  expNeeds:
+  - 100
+  - 200
+  - 300
 --- !u!1 &2081376743
 GameObject:
   m_ObjectHideFlags: 0
@@ -6515,7 +6556,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3788890907606781868, guid: 8f374b6caed7e1a4999d2f8ec8f44b12, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.4159987
+      value: -3.82
       objectReference: {fileID: 0}
     - target: {fileID: 3788890907606781868, guid: 8f374b6caed7e1a4999d2f8ec8f44b12, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6556,6 +6597,14 @@ PrefabInstance:
     - target: {fileID: 6638653246553960721, guid: 8f374b6caed7e1a4999d2f8ec8f44b12, type: 3}
       propertyPath: m_Name
       value: "\u7D93\u9A57\u7403"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7924710844098727760, guid: 8f374b6caed7e1a4999d2f8ec8f44b12, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7924710844098727760, guid: 8f374b6caed7e1a4999d2f8ec8f44b12, type: 3}
+      propertyPath: distanceEat
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f374b6caed7e1a4999d2f8ec8f44b12, type: 3}

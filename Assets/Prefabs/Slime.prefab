@@ -158,6 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80438f3f3c1617d48818f86668e8fb99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 1e01fdff595d2f34cba3ca03c9a92b75, type: 2}
   Player: {fileID: 0}
 --- !u!114 &1341934245
 MonoBehaviour:
@@ -173,3 +174,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 1e01fdff595d2f34cba3ca03c9a92b75, type: 2}
   prefabDamage: {fileID: 4972290900085340555, guid: c5235852d2de63f45b224b8f4322d612, type: 3}
+  hp: 0
