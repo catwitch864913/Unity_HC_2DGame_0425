@@ -6,6 +6,8 @@ public class WeaponSystem : MonoBehaviour
 {
     [Header("生成間格時間"), Range(0, 10)]
     public float inverval = 3.5f;
+    [Header("武器攻擊力"), Range(0, 10000)]
+    public float attack = 50;
     [Header("武器預置物")]
     public GameObject prefabWeapon;
 
