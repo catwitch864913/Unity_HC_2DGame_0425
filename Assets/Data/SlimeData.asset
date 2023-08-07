@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a91ebf728f5816a4e893905747538933, type: 3}
   m_Name: SlimeData
   m_EditorClassIdentifier: 
-  hp: 500
+  hp: 50
   attack: 10
   speed: 5
   expProbability: 0.9
   prefabExp: {fileID: 6638653246553960721, guid: 8f374b6caed7e1a4999d2f8ec8f44b12, type: 3}
+  attackRange: 0.65
+  attackInterval: 1

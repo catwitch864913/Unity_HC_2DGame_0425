@@ -12,11 +12,13 @@ public class DamageBasic : MonoBehaviour
     public GameObject prefabDamage;
     
     public float hp;
+    public float hpMax;
     private void Awake()
     {
         hp = data.hp;
+        hpMax = hp;
     }
-    public void Damage(float damage)
+    public virtual void Damage(float damage)
     {
         hp -= damage;
 

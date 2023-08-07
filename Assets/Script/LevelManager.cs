@@ -84,6 +84,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    //此方法在腳本那選擇打開按下後會執行下方的程式
     [ContextMenu("產生經驗值需求資料")]
     private void ExpNeeds()
     {
@@ -126,6 +127,7 @@ public class LevelManager : MonoBehaviour
     {
         int lv = dataSkills[2].skillLv - 1;
         weaponSystemApex.inverval = dataSkills[2].skillValues[lv];
+        weaponSystemApex.Restart();
     }
     [Header("玩家資料")]
     public DataBasic dataBasic;

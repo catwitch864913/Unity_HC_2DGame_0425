@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 [CreateAssetMenu(menuName ="Cat/Data Enemy")]
@@ -9,4 +11,8 @@ public class DataEnemy : DataBasic
     public float expProbability;
     [Header("¸gÅç¹w¸mª«")]
     public GameObject prefabExp;
+    [Header("§ðÀ»½d³ò"), Range(0, 3)]
+    public float attackRange = 1f;
+    [Header("§ðÀ»¶¡¹j"), Range(0, 3)]
+    public float attackInterval = 1;
 }

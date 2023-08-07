@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,5 +23,12 @@ public class WeaponSystem : MonoBehaviour
         GameObject tempWeapon= Instantiate(prefabWeapon, transform.position, transform.rotation);
         Rigidbody2D rigWeapon = tempWeapon.GetComponent<Rigidbody2D>();
         rigWeapon.AddForce(power);
+        tempWeapon.GetComponent<Weapon>().attack = this.attack;
+    }
+
+    public void Restart()
+    {
+        CancelInvoke("SpawnWeapon");
+        InvokeRepeating("SpawnWeapon", 0, inverval);
     }
 }
