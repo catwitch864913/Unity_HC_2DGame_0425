@@ -31,4 +31,8 @@ public class WeaponSystem : MonoBehaviour
         CancelInvoke("SpawnWeapon");
         InvokeRepeating("SpawnWeapon", 0, inverval);
     }
+    public void Stop()
+    {
+        CancelInvoke("SpawnWeapon");
+    }
 }

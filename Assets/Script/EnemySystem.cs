@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 
@@ -10,6 +11,8 @@ public class EnemySystem : MonoBehaviour
 
     private Transform Player;
     private float timer;
+    private DamagePlayer damagePlayer;
+    
 
     //實用功能，用來繪製碰撞器官看範圍的，輔助程式
     private void OnDrawGizmos()
@@ -21,11 +24,12 @@ public class EnemySystem : MonoBehaviour
     private void Awake()
     {
         Player = GameObject.Find("企鵝").transform;
+        damagePlayer = Player.GetComponent<DamagePlayer>();
     }
     private void Update()
     {
         float distance = Vector3.Distance(transform.position, Player.position);
-        print(distance);
+        //print(distance);
 
         if (distance > data.attackRange)
         {
@@ -33,9 +37,16 @@ public class EnemySystem : MonoBehaviour
         }
         else
         {
-            print("<color=#f96>進入攻擊範圍</color>");
+            //print("<color=#f96>進入攻擊範圍</color>");
             timer += Time.deltaTime;
-            print($"<color=#9f4>計時器:{timer}</Color>");
+            //print($"<color=#9f4>計時器:{timer}</Color>");
+            if (timer >= data.attackInterval)
+            {
+                timer = 0;
+                damagePlayer.Damage(data.attack);
+            }
         }
+        if (transform.position.x > Player.position.x) transform.eulerAngles = new Vector3(0, 0, 0);
+        else transform.eulerAngles = new Vector3(0, 180, 0);
     }
 }
