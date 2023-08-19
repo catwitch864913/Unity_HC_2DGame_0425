@@ -39,8 +39,15 @@ public class LevelManager : MonoBehaviour
         //AddExp(50);
         for (int i = 0; i < 10; i++)
         {
-            print($"<color=#ff6699>i的值:{i}</color>");
+            //print($"<color=#ff6699>i的值:{i}</color>");
         }
+    }
+    private void Update()
+    {
+        //這樣打只能在unity編輯器裡面有用，如果匯出該程式無用
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.Alpha1)) AddExp(100);
+#endif
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -54,7 +61,7 @@ public class LevelManager : MonoBehaviour
     public void AddExp(float exp)
     {
         this.exp += exp;
-        if (this.exp > expNeeds[lv - 1])
+        if (this.exp >= expNeeds[lv - 1])
         {
             this.exp -= expNeeds[lv - 1];
             lv++;
@@ -64,12 +71,14 @@ public class LevelManager : MonoBehaviour
         textExp.text = this.exp + "/" + expNeeds[lv - 1];
         imgExp.fillAmount = this.exp / expNeeds[lv - 1];
     }
+    [Header("開關")]
+    public GameObject btnClose;
     private void LevelUp()
     {
         goLvUp.SetActive(true);
         Time.timeScale = 0;
 
-        print(dataSkills[4].skillLv);
+       // print(dataSkills[4].skillLv);
         //x.lv<5為條件&#xff1a;挑出所有等級小於5的技能
         randomSkill = dataSkills.Where(Skill => Skill.skillLv < 5).ToList();
         //為重新排序，數字夠大即可達到隨機效果。
@@ -77,11 +86,19 @@ public class LevelManager : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            goSkillUI[i].transform.Find("技能名稱").GetComponent<TextMeshProUGUI>().text = randomSkill[i].nameSkill;
-            goSkillUI[i].transform.Find("技能描述").GetComponent<TextMeshProUGUI>().text = randomSkill[i].skillDescription;
-            goSkillUI[i].transform.Find("技能等級").GetComponent<TextMeshProUGUI>().text = "Lv." + randomSkill[i].skillLv;
-            goSkillUI[i].transform.Find("技能圖示").GetComponent<Image>().sprite = randomSkill[i].skillPicture;
+            if (i > randomSkill.Count-1)
+            {
+                goSkillUI[i].SetActive(false);
+            }
+            else
+            {
+                goSkillUI[i].transform.Find("技能名稱").GetComponent<TextMeshProUGUI>().text = randomSkill[i].nameSkill;
+                goSkillUI[i].transform.Find("技能描述").GetComponent<TextMeshProUGUI>().text = randomSkill[i].skillDescription;
+                goSkillUI[i].transform.Find("技能等級").GetComponent<TextMeshProUGUI>().text = "Lv." + randomSkill[i].skillLv;
+                goSkillUI[i].transform.Find("技能圖示").GetComponent<Image>().sprite = randomSkill[i].skillPicture;
+            }
         }
+        if (randomSkill.Count == 0) btnClose.SetActive(true);
     }
 
     //此方法在腳本那選擇打開按下後會執行下方的程式
@@ -93,6 +110,11 @@ public class LevelManager : MonoBehaviour
         {
             expNeeds[i] = (i + 1) * 100;
         }
+    }
+    public void ClickCloseButton()
+    {
+        goLvUp.SetActive(false);
+        Time.timeScale = 1f;
     }
 
     public void ClickSkillButton(int indexSkill)

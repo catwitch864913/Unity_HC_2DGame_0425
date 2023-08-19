@@ -26,13 +26,13 @@ public class DamageBasic : MonoBehaviour
         tempDamage.transform.Find("傷害顯示文字").GetComponent<TextMeshProUGUI>().text = damage.ToString();
 
         Destroy(tempDamage, 1.5f);
-        print($"<color=#ffee66>{gameObject.name}血量剩下:{hp}</color>");
+        //print($"<color=#ffee66>{gameObject.name}血量剩下:{hp}</color>");
 
         if (hp <= 0) Dead();
     }
     protected virtual void Dead()
     {
-        print($"<color=#ff9966>{gameObject.name}死亡</color>");
+       // print($"<color=#ff9966>{gameObject.name}死亡</color>");
 
     }
 }

@@ -17,7 +17,7 @@ public class DamagePlayer : DamageBasic
     public TextMeshProUGUI textFinal;
     public void Start()
     {
-        Damage(300);
+        //Damage(300);
     }
     public override void Damage(float damage)
     {
@@ -30,6 +30,11 @@ public class DamagePlayer : DamageBasic
         playerCollder.enabled = false;
         weaponSystem.Stop();
         textFinal.text = "你已經死了...";
+        goFinal.SetActive(true);
+    }
+    public void Win()
+    {
+        textFinal.text = "過關";
         goFinal.SetActive(true);
     }
     
