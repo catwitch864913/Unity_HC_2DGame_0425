@@ -22,18 +22,16 @@ public class SpawnEnemyManager : MonoBehaviour
 
         if (index >= dataSpawnEnemies.Length) return;
 
-        if (index == dataSpawnEnemies.Length-1)
-        {
-            int random = Random.Range(0, spawnSystems.Length);
-            Vector3 pos=spawnSystems[random].transform.position;
-            Instantiate(dataSpawnEnemies[index].prefabEnemy, pos, Quaternion.identity);
-            index++;
-            return;
-        }
-
         if (timer >= dataSpawnEnemies[index].timeToSpawn)
         {
-
+            if (index == dataSpawnEnemies.Length - 1)
+            {
+                int random = Random.Range(0, spawnSystems.Length);
+                Vector3 pos = spawnSystems[random].transform.position;
+                Instantiate(dataSpawnEnemies[index].prefabEnemy, pos, Quaternion.identity);
+                index++;
+                return;
+            }
             for (int i = 0; i < spawnSystems.Length; i++)
             {
                 spawnSystems[i].prefabEnemy = dataSpawnEnemies[index].prefabEnemy;
