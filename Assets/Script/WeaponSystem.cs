@@ -16,14 +16,17 @@ public class WeaponSystem : MonoBehaviour
     public Vector2 power;
     private void Awake()
     {
-        InvokeRepeating("SpawnWeapon",0,inverval);
+        InvokeRepeating("SpawnWeapon", 0, inverval);
     }
     private void SpawnWeapon()
     {
-        GameObject tempWeapon= Instantiate(prefabWeapon, transform.position, transform.rotation);
+        GameObject tempWeapon = Instantiate(prefabWeapon, transform.position, transform.rotation);
         Rigidbody2D rigWeapon = tempWeapon.GetComponent<Rigidbody2D>();
         rigWeapon.AddForce(power);
         tempWeapon.GetComponent<Weapon>().attack = this.attack;
+
+        AudioClip sound = SoundManager.instance.soundFireApex;
+        SoundManager.instance.PlaySound(sound, 0.8f, 1.5f);
     }
 
     public void Restart()
